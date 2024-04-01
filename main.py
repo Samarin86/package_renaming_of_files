@@ -6,7 +6,7 @@ list_names = []
 counter = 0
 
 for file_name in os.listdir(path):
-    if file_name != 'Renaming_audio.py':
+    if file_name != os.path.basename(__file__):
         """ 
         If you need to delete a fixed number of characters:
         """
@@ -19,7 +19,7 @@ for file_name in os.listdir(path):
 
 
 for item in os.listdir(path):
-    if item != 'main.py':
+    if item != os.path.basename(__file__):
         os.rename(os.path.join(path, item),
                   os.path.join(path, list_names[counter]))
         counter += 1
