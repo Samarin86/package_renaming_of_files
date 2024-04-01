@@ -19,7 +19,7 @@ for file_name in os.listdir(path):
 
 
 for item in os.listdir(path):
-    if item != 'Renaming_audio.py':
+    if item != 'main.py':
         os.rename(os.path.join(path, item),
                   os.path.join(path, list_names[counter]))
         counter += 1
