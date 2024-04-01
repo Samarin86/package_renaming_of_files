@@ -7,15 +7,21 @@ counter = 0
 
 for file_name in os.listdir(path):
     if file_name != 'Renaming_audio.py':
+        """ 
+        If you need to delete a fixed number of characters:
+        """
         # list_names.append(os.path.join(file_name[5:]))
-        list_names.append(re.findall(r'\w', file_name))
+        """
+        If you need to completely clear the names of unnecessary characters:
+        """
+        list_names.append(
+            (re.sub(r'[^\w\S]+|[\d]+', r' ', file_name).strip() + '3').replace('_', '', 1))
 
-print(list_names)
 
-# for item in os.listdir(path):
-#     if item != 'Renaming_audio.py':
-#         os.rename(os.path.join(path, item),
-#                   os.path.join(path, list_names[counter]))
-#         counter += 1
+for item in os.listdir(path):
+    if item != 'Renaming_audio.py':
+        os.rename(os.path.join(path, item),
+                  os.path.join(path, list_names[counter]))
+        counter += 1
 
-print('Переименование завершено!')
+print('Renaming is complete!')
